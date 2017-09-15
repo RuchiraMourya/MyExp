@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style type="text/css">
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #viewContainer {
+        background-image: url("landscap.png");
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    #sun {
+        position: absolute;
+        width: 6%;
+        height: 0;
+        padding-bottom: 6%;
+        border-radius: 50%;
+        background-color: #ffd100;
+        top: 50%;
+        left: 40%;
+        box-shadow: 0px 0px 5px 5px yellow;
+    }
+
+    #tree1 {
+        position: absolute;
+        width: 60%;
+        height: 65%;
+        bottom: 30%;
+        left: 6%;
+    }
+
+    #tree2 {
+        position: absolute;
+        width: 60%;
+        height: 70%;
+        left: 40%;
+    }
+
+    #tree3 {
+        position: absolute;
+        width: 1%;
+        height: 1%;
+        bottom: 0;
+        left: 85%;
+        -webkit-transform-origin-x: center;
+        -webkit-transform-origin-y: bottom;
+    }
+
+    #tree4 {
+        position: absolute;
+        width: 1%;
+        height: 1%;
+        bottom: 10%;
+        left: 8%;
+        -webkit-transform-origin-x: center;
+        -webkit-transform-origin-y: bottom;
+    }
+
+    #tree5 {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        bottom: 40%;
+        left: 70%;
+    }
+
+    #tree6 {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        bottom: 0;
+        left: 25%;
+    }
+
+    #flower1 {
+        position: absolute;
+        width: 0.10%;
+        height: 0.15%;
+        top: 50%;
+        left: 8%;
+    }
+
+    #flower2 {
+        position: absolute;
+        width: 0.10%;
+        height: 0.15%;
+        top: 45%;
+        left: 40%;
+    }
+
+    #flower3 {
+        position: absolute;
+        width: 0.10%;
+        height: 0.15%;
+        top: 20%;
+        left: 70%;
+    }
+
+    #flower4 {
+        position: absolute;
+        width: 0.10%;
+        height: 0.15%;
+        top: 40%;
+        right: 10%;
+    }
+
+    #bird1 {
+        position: absolute;
+        width: 15%;
+        padding-bottom: 15%;
+        top: 1%;
+        left: 110%;
+    }
+
+    #bird2 {
+        position: absolute;
+        width: 8%;
+        padding-top: 8%;
+        top: 10%;
+        left: 110%;
+    }
+
+    #fly {
+        position: absolute;
+        width: 5%;
+        padding-top: 5%;
+        top: 150%;
+        left: 80%;
+    }
+    /* animation code goes here*/
+
+    .sunAnimate {
+        top: 4% !important;
+        left: 40% !important;
+        -webkit-transition: all 6000ms linear;
+        animation: glow 2s infinite linear forwards;
+    }
+
+    .treeAnimate {
+        transform: scale(40, 60) !important;
+        -webkit-transition: transform 5000ms linear 3s;
+    }
+
+    .flowerAnimate {
+        transform: scale(60) !important;
+        -webkit-transition: transform 5000ms linear 8s;
+    }
+
+    .bird2Animate {
+        top: 40% !important;
+        left: 51% !important;
+        -webkit-transition: all 5000ms linear 20s;
+    }
+
+    .birdAnimate {
+        animation: birdAnimate 10s 10s linear infinite forwards;
+    }
+
+    .flyAnimate {
+        animation: flyAnimate 15s 15s linear infinite forwards;
+    }
+
+    @media only screen and (max-width: 480px) {
+        #flower1,
+        #flower2,
+        #flower3,
+        #flower4 {
+            width: 0.16%;
+            height: 0.16%;
+        }
+    }
+
+    @keyframes flyAnimate {
+        0% {
+            top: 100%;
+            left: 30%;
+        }
+       25% {
+            top: 50%;
+            left: 5%;
+        }
+        50% {
+            top: 20%;
+            left: 65%;
+        }
+        75% {
+            top: 40%;
+            left: 85%;
+        }
+        100% {
+            top: 10%;
+            left: 100%;
+            cursor:
+        }
+    }
+
+    @keyframes birdAnimate {
+        0% {
+            left: 110%;
+        }
+        100% {
+            left: -20%;
+        }
+    }
+
+    @keyframes glow {
+        0%,
+        100% {
+            box-shadow: 0px 0px 5px 5px yellow;
+        }
+
+        25% {
+            box-shadow: 0px 0px 20px 20px yellow;
+        }
+    }
+    </style>
+    <script type="text/javascript">
+    setTimeout(function() {
+        document.getElementById('sun').classList.add("sunAnimate");
+        document.getElementById('tree3').classList.add("treeAnimate");
+        document.getElementById('tree4').classList.add("treeAnimate");
+        document.getElementById('flower1').classList.add("flowerAnimate");
+        document.getElementById('flower2').classList.add("flowerAnimate");
+        document.getElementById('flower3').classList.add("flowerAnimate");
+        document.getElementById('flower4').classList.add("flowerAnimate");
+        document.getElementById('bird1').classList.add("birdAnimate");
+        document.getElementById('bird2').classList.add("bird2Animate");
+        document.getElementById('fly').classList.add("flyAnimate");
+    }, 1000);
+    </script>
+</head>
+
+<body>
+    <div id="viewContainer">
+        <div id="sun"></div>
+        <img src="tree.svg" id="tree1">
+        <img src="tree.svg" id="tree2">
+        <img src="tree.svg" id="tree3">
+        <img src="tree.svg" id="tree4">
+        <img src="tree.svg" id="tree5">
+        <img src="tree.svg" id="tree6">
+        <img src="flower.png" id="flower1">
+        <img src="flower.png" id="flower2">
+        <img src="flower.png" id="flower3">
+        <img src="flower.png" id="flower4">
+        <img src="bird1.png" id="bird1">
+        <img src="bird2.png" id="bird2">
+        <img src="fly.png" id="fly">
+    </div>
+</body>
+
+</html>
