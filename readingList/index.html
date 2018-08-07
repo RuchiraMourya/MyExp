@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+               background-color: rgb(68, 154, 136);
+               padding: 0;
+               margin: 0;
+               width: 100%;
+               height: 100%;
+            }
+            #listContainer a{
+                display: inline-block;
+                width: 100%;
+                height: 20px;
+                padding: 15px;
+                color: white;
+                font-size: 18px;
+                font-weight: lighter;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div id = 'listContainer'></div>
+        <script>
+        const dataList = [
+       'https://medium.com/prdxn/react-best-practices-and-checklist-13eaf3317d68',
+       'https://tympanus.net/codrops/css_reference/'
+        ];
+
+        (function () {
+            let listContainer = document.getElementById('listContainer');
+            let mappedData = dataList.map((data, index)=> {
+                let ele = document.createElement("a");
+                ele.href = data;
+                ele.target = "_blank";
+                ele.innerHTML = data;
+                listContainer.appendChild(ele);
+            });
+})();
+        </script>
+    </body>
+</html>
