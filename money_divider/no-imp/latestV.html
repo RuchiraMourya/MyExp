@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GiveBack</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="GiveBack">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Ruchika">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+    
+    body, html {
+    margin: 0;
+    padding: 0;
+    border:0;
+    height: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+</style>
+
+</head>
+
+<body>
+    <div class="container-fluid" id="main">
+        <div id="addPerson">
+            <h2 id="title">Enter Person Name(separate by comma)</h2>
+            <form action="#" method="post" name="form_name" id="form_id" class="form_class">
+                <div class="form-group">
+                    <input type="text"  class="form-control" class="nameList" id="nameList" placeholder="Person's Name" />
+                </div>
+                <button type="button" class="btn btn-default" id="submitBtn">Submit</button>
+            </form>
+        </div>
+        <div id="collectData"></div>
+        <div id="finalResult">
+            <ul></ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    document.getElementById('submitBtn').addEventListener('click', formSubmit);
+    var nameListArray = [];
+
+    function formSubmit() {
+        var nameList = document.getElementById('nameList').value;
+        document.getElementById("form_id").addEventListener('‌​submit', function(event) { event.preventDefault(); });
+        document.getElementById("addPerson").style.display = "none";
+        var collectDataDiv = document.getElementById("collectData");
+        var nameList = nameList.replace(/(^,)|(,$)/g, "");
+        nameListArray = nameList.split(",");
+        for (i = 0; i < nameListArray.length; i++) {
+            var divWrapper = document.createElement("div");
+            collectDataDiv.appendChild(divWrapper);
+            var nameBox = document.createElement("div");
+            nameBox.className = "nameBox";
+            nameBox.textContent = nameListArray[i];
+            var moneyBox = document.createElement("input");
+            moneyBox.className = "moneyBox";
+            moneyBox.className = "form-control";
+            moneyBox.value = "0";
+            divWrapper.appendChild(nameBox);
+            divWrapper.appendChild(moneyBox);
+        }
+
+        var buttonBox = document.createElement("button");
+        buttonBox.textContent = "Done";
+        buttonBox.id = "doneBtn";
+         buttonBox.className = "btn btn-default";
+        collectDataDiv.appendChild(buttonBox);
+        buttonBox.addEventListener("click", doneActionFunc);
+    }
+        
+      
+
+        function calculateAndSimplify(valueA, valueB, indexA, indexB) {
+            var resultDiv = document.querySelector("#finalResult ul");
+            var sub = valueA - valueB;
+            var resultString = nameListArray[indexB] + " will give " + sub + "Rs to " + nameListArray[indexA];
+            var resultList = document.createElement("li");
+            resultList.textContent = resultString;
+            resultDiv.appendChild(resultList);
+        }
+
+        function doneActionFunc() {
+            console.log("done clicked");
+            var receiveBucket = [],
+                dataMatrixRow = [],
+                dataMatrix = [],
+                receiveBucketList = {};
+
+
+            // get data from person blocks
+            var moneyBoxList = document.getElementsByClassName('moneyBox');
+            var length = moneyBoxList.length;
+            for (var i = 0; i < length; i++) {
+                for (var j = 0; j < length; j++) {
+                    dataMatrixRow.push(parseInt((moneyBoxList[i].value)) / length);
+                }
+                dataMatrix.push(dataMatrixRow);
+                dataMatrixRow = [];
+            }
+            for (var i = 0; i < length; i++) {
+                for (var j = 0; j < length; j++) {
+                    if (i == j) {
+                        break; 
+                   } else if (dataMatrix[i][j] > dataMatrix[j][i]) {
+                        calculateAndSimplify(dataMatrix[i][j], dataMatrix[j][i], i, j);
+                    } else {
+                        calculateAndSimplify(dataMatrix[j][i], dataMatrix[i][j], j, i);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+body,
+    html {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        height: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        background-color: #4abdac;
+        color: white;
+        font-size: 18px;
+        font-family: Arial;
+        text-align: center;
+    }
+
+    #main input {
+        width: 20%;
+        height: 30px;
+        border-radius: 6px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        min-width: 250px;
+    }
+
+    #main button {
+        width: 5%;
+        height: 40px;
+        border-radius: 8px;
+        font-size: 20px;
+        color: #ffffff;
+        border: 3px solid #5de2ce;
+        background-color: #fc4a1a;
+        min-width: 100px;
+    }
+
+    #main h2 {
+        font-size: 30px;
+    }
+
+    #collectData{
+        display: none;
+    }
+
+    #finalResult ul li{
+        list-style: none;
+        padding: 20px;
+        font-size: 1.2em;
+    }
